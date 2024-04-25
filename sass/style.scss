@@ -6,7 +6,7 @@
   height: 100%;
   top : 0%;
   left: 0%;
-  border: 2px solid red;
+  border: 2px solid black;
   background-color: rgba(153, 205, 50, 0.068);
   z-index: 1;
   @media screen and (min-width: 400px){
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  z-index: 2;
 }
 
 .carrousel__figure{
@@ -75,4 +75,18 @@
   margin-bottom: .5rem;
   padding: .5rem;
   left: 25%;
+}
+
+.carrousel__fleche{
+  padding: 20px;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  border: 2px solid black;
+}
+.carrousel__fleche--gauche{
+  left: -20px;
+}
+.carrousel__fleche--droite{
+  right: -20px;
 }

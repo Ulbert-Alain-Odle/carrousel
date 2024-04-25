@@ -32,6 +32,78 @@
         index++;
     }
 
+    //Aller chercher tout les bouton radion dans le carrousel
+    let carrousel__radios = document.querySelectorAll('.carrousel__radio');
+    //mettre le premier radio en checked
+    carrousel__radios[0].checked = true;
+    //mettre la première image en opacité 1 et les autres en 0
+    let carrousel__imgs = carrousel__figure.querySelectorAll('.carrousel__img');
+    for (const img of carrousel__imgs) {
+        img.style.opacity = 0;
+    }
+    carrousel__imgs[0].style.opacity = 1;
+    
+    //création de 2 btn pour changer d'image vers la droite ou vers la gauche portant la classe carrousel__fleche
+    let carrousel__fleche__gauche = document.createElement('button');
+    carrousel__fleche__gauche.classList.add('carrousel__fleche');
+    carrousel__fleche__gauche.classList.add('carrousel__fleche--gauche');
+    carrousel__fleche__gauche.innerHTML = '<';
+    
+    let carrousel__fleche__droite = document.createElement('button');
+    carrousel__fleche__droite.classList.add('carrousel__fleche');
+    carrousel__fleche__droite.classList.add('carrousel__fleche--droite');
+    carrousel__fleche__droite.innerHTML = '>';
+    
+    
+    
+    console.log(form);
+    
+    //appelé un fonction à partir du bouton de droite
+    carrousel__fleche__droite.addEventListener('click', function(){
+        let index = 0;
+        for (const radio of carrousel__radios) {
+            if(radio.checked){
+                radio.checked = false;
+                carrousel__imgs[index].style.opacity = 0;
+                if(index == carrousel__radios.length - 1){
+                    index = 0;
+                }else{
+                    index++;
+                }
+                carrousel__radios[index].checked = true;
+                carrousel__imgs[index].style.opacity = 1;
+                break;
+            }
+            index++;
+        }
+    });
+    
+    //appelé un fonction à partir du bouton de gauche
+    carrousel__fleche__gauche.addEventListener('click', function(){
+        let index = 0;
+        for (const radio of carrousel__radios) {
+            if(radio.checked){
+                radio.checked = false;
+                carrousel__imgs[index].style.opacity = 0;
+                if(index == 0){
+                    index = carrousel__radios.length - 1;
+                }else{
+                    index--;
+                }
+                carrousel__radios[index].checked = true;
+                carrousel__imgs[index].style.opacity = 1;
+                break;
+            }
+            index++;
+        }
+    }
+    
+    );
+    
+    
+    carrousel.appendChild(carrousel__fleche__droite);
+    carrousel.appendChild(carrousel__fleche__gauche);
+    
     function creerRadioCarrousel(index){
         let carrousel__radio = document.createElement('input');
         carrousel__radio.classList.add("carrousel__radio");
@@ -39,11 +111,12 @@
         carrousel__radio.name = 'radioCarrousel';
         carrousel__radio.dataset.index = index;
         form.appendChild(carrousel__radio);
+
         //ajouter un écouteur permettant de changer l'image du carrousel selon l'index du radio
         //carrousel__img.children[index].sttyle.opacity = 1; pour changer l'opacité de l'image
         carrousel__radio.addEventListener('click', function(){
             let index = this.dataset.index;
-            let carrousel__imgs = document.querySelectorAll('.carrousel__img');
+            let carrousel__imgs = carrousel__figure.querySelectorAll('.carrousel__img');
             for (const img of carrousel__imgs) {
                 img.style.opacity = 0;
             }
