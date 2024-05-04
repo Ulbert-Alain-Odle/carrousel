@@ -19,23 +19,34 @@
     //carrousel__img.src = galerie__img.src;
     //console.log(carrousel__img.src);
     
+    //Aller chercher tout les bouton radion dans le carrousel
     
     let galerie__imgs = galerie.querySelectorAll('img');
     console.log(galerie__imgs);
-
+    
     let index = 0;
-
+    
     for (const elm of galerie__imgs) {
         console.log(elm.src);
+        elm.dataset.index = index;
         creerImageCarrousel(elm,index)
         creerRadioCarrousel(index);
+        console.log(index);
+        //ajouter un event listener sur les image
+        elm.addEventListener('click', function(){
+            carrousel.classList.add('carrousel--ouvrir');
+            console.log(elm.dataset.index);
+            carrousel__radios[elm.dataset.index].checked = true;
+            activerLaBonneImg(elm.dataset.index);
+        });
         index++;
     }
+    
 
-    //Aller chercher tout les bouton radion dans le carrousel
+    //aller chercher tt les img du carrousel
     let carrousel__radios = document.querySelectorAll('.carrousel__radio');
     //mettre le premier radio en checked
-    carrousel__radios[0].checked = true;
+    //carrousel__radios[0].checked = true;
     //mettre la première image en opacité 1 et les autres en 0
     let carrousel__imgs = carrousel__figure.querySelectorAll('.carrousel__img');
     for (const img of carrousel__imgs) {
@@ -116,11 +127,8 @@
         //carrousel__img.children[index].sttyle.opacity = 1; pour changer l'opacité de l'image
         carrousel__radio.addEventListener('click', function(){
             let index = this.dataset.index;
-            let carrousel__imgs = carrousel__figure.querySelectorAll('.carrousel__img');
-            for (const img of carrousel__imgs) {
-                img.style.opacity = 0;
-            }
-            carrousel__imgs[index].style.opacity = 1;
+            
+            activerLaBonneImg(index);
         });
     }
 
@@ -132,12 +140,16 @@
         carrousel__figure.appendChild(carrousel__img);
     }
 
-
-    bouton.addEventListener('click', function(){
-        carrousel.classList.add('carrousel--ouvrir');
-    });
+   
 
     boutonFermer.addEventListener('click', function(){
         carrousel.classList.remove('carrousel--ouvrir');
     });
+
+    function activerLaBonneImg(index){
+        for (const img of carrousel__imgs) {
+            img.style.opacity = 0;
+        }
+        carrousel__imgs[index].style.opacity = 1;
+    }
 })();

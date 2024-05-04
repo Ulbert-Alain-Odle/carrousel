@@ -30,7 +30,7 @@
             
             function genere_html() {
                 $html = '
-                <button class="bouton__ouvrir">Ouvrir Carrousel</button>
+                
                 <div class="carrousel">
                 <button class="carrousel__x">X</button>
                 <figure class="carrousel__figure"></figure>
