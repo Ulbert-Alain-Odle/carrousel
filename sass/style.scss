@@ -45,9 +45,12 @@
   left: 0%;
   top: 0%;
   opacity: 1;
+  transition: opacity 1s ease;
 }
 
-
+.hide{
+  opacity: 0;
+}
 
 .carrousel--ouvrir{
   transform: scale(1);

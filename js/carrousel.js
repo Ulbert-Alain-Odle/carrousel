@@ -51,8 +51,10 @@
     let carrousel__imgs = carrousel__figure.querySelectorAll('.carrousel__img');
     for (const img of carrousel__imgs) {
         img.style.opacity = 0;
+        //img.style.classList.add("hide");
     }
     carrousel__imgs[0].style.opacity = 1;
+    //carrousel__imgs[0].classList.remove("hide");
     
     //création de 2 btn pour changer d'image vers la droite ou vers la gauche portant la classe carrousel__fleche
     let carrousel__fleche__gauche = document.createElement('button');
@@ -76,6 +78,7 @@
             if(radio.checked){
                 radio.checked = false;
                 carrousel__imgs[index].style.opacity = 0;
+                //carrousel__imgs[index].classList.add("hide");
                 if(index == carrousel__radios.length - 1){
                     index = 0;
                 }else{
@@ -83,6 +86,7 @@
                 }
                 carrousel__radios[index].checked = true;
                 carrousel__imgs[index].style.opacity = 1;
+                //carrousel__imgs[index].classList.remove("hide");
                 break;
             }
             index++;
@@ -96,6 +100,7 @@
             if(radio.checked){
                 radio.checked = false;
                 carrousel__imgs[index].style.opacity = 0;
+                //carrousel__imgs[index].classList.add("hide");
                 if(index == 0){
                     index = carrousel__radios.length - 1;
                 }else{
@@ -103,6 +108,7 @@
                 }
                 carrousel__radios[index].checked = true;
                 carrousel__imgs[index].style.opacity = 1;
+                //carrousel__imgs[index].classList.remove("hide");
                 break;
             }
             index++;
@@ -148,8 +154,10 @@
 
     function activerLaBonneImg(index){
         for (const img of carrousel__imgs) {
+            //img.classList.add("hide");
             img.style.opacity = 0;
         }
         carrousel__imgs[index].style.opacity = 1;
+        //carrousel__imgs[index].classList.remove("hide");
     }
 })();
