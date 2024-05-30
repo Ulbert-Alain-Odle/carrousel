@@ -1,5 +1,4 @@
-# Exercice 5 -- Création du carrousel
-## Apparition des image et  déplacement avec des boutons
+# TP2 -- Création du carrousel
 
 ### Information
 
@@ -12,5 +11,5 @@
 
 ### Description
 
-- Une galerie d'image à été intégrer à la page costa rica grâca au extention wordpress. Le bouton permet d'afficher les images, puis on peut naviguer 
-- à l'intérieur en utilisant les boutons radios ou les flèches, enfin, on peut appuyer sur x pour fermer la galerie.
+- Une galerie d'image à été intégrer à la première carte de la page principal du site et à la page principal
+- On ouvre le carrousel en appuyant sur une image et on navigue soit avec les boutons radios, soit avec les flèches
